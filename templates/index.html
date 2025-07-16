@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>ClusterBot</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"></link>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui.css') }}"></link>
+</head>
+<body onload="init();">
+    <div id="wrap" style="width:1500px">
+      <div id="div_chat" style="width:750px; float:left">
+        <div id="div_header" class="toolbar ui-widget-header ui-corner-all ui-accordion-header">
+          <span style="float: left">
+            <label class="toolbar_label">ClusterBot</label>
+            <!--button id="btn_new_chat" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"> + New Question</button-->
+          </span>
+        </div>
+        <div id="div_chat_content" style="width:750px; height:600px; float:left">
+          <input type="text" id="question" placeholder="Ask ClusterBot here">
+          <button id="submitButton" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">submit</button>
+          <p id="output" contenteditable="true"></p>
+        </div>
+      </div>
+      <div id="div_answer" style="width:750px; height:600px; float:right">
+
+        		<div id="div_header" class="toolbar ui-widget-header ui-corner-all ui-accordion-header">
+          			<span style="float: left">
+          				<label class="toolbar_label">Possible Solution</label>
+                </span>
+        		</div>
+
+            <div id="div_answer_content" style="width:750px; height:600px; float:left">
+              <div id="answer" style="width:750px; float:left"></div>
+            </div>
+      </div>
+      <div id="div_source" style="width:1500px; float:right">
+
+            <div id="div_header" class="toolbar ui-widget-header ui-corner-all ui-accordion-header">
+                <span style="float: left">
+                  <label class="toolbar_label">Sources and Citations</label>
+                </span>
+            </div>
+
+            <div id="div_source_content" style="width:1500px; height:1000px; float:left">
+              <div id="source0" style="width:495px; float:left"></div>
+              <div id="source1" style="width:495px; float:left"></div>
+              <div id="source2" style="width:495px; float:left"></div>
+            </div>
+      </div>      
+
+    </div>
+      <script src="{{ url_for('static', filename='lib/d3.v5.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='lib/jquery-3.7.1.js') }}"></script>
+      <script src="{{ url_for('static', filename='lib/jquery-ui.js') }}"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+        
+
+      <!-- my own code -->
+      <script src="{{ url_for('static', filename='js/core.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/models/chatPlot.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+    </div>
+</body>
+</html>
