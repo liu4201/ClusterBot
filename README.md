@@ -2,6 +2,13 @@
 A novel RAG assistant designed to support High-Performance Computing (HPC) staff in user support roles
 
 ## Optional Arguments
+
+### input directory
+`-kb`, `--kb_dir`: Sets the path of the SupportKnowledgeBase directory. This is the path of your own SupportKnowledgeBase directory **where you put your markdown files inside**.
+
+`-vectordb`, `--vectordb_dir`: Sets the path of the Vectordb directory. This can be a path of an empty directory.
+
+### parameters of splitting strategies and models
 `-s`, `--split_size`: Specifies the chunk size to split the document into. Default is `1500`.
 
 `--chunk_overlap`: Sets the overlapped ratio between two chunks. Default is `0.25`.
@@ -16,17 +23,17 @@ A novel RAG assistant designed to support High-Performance Computing (HPC) staff
 
 ## Installation
 
-### (1) Create the Conda environment:
+### Create the Conda environment:
 
 `conda env create -f environment.yml` on Mac
 
-`conda env create -f environment_linux.yml` on Linux
+`conda env create -f environment_linux.yml` on Linu
 
-### (2) Activate your environment
 
-`conda activate my_environment`
 
-### (3) Run ClusterBot
+## Run ClusterBot
+
+`conda activate robot-env`
 
 `python server.py --local` to run ClusterBot in your machine, only for the model of Llama-3.2-3B-Instruct.
 

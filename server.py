@@ -211,6 +211,8 @@ if __name__ == "__main__":
     parser.add_argument("-e", "--embedding", type=str, default="all-mpnet-base-v2", help="the embedding models")
     parser.add_argument('--local', action='store_true', help='Enable my local LLMs: llama3.2-Instruct')
     parser.add_argument('--split_on_header', action='store_true', help='Enable split on header with SupportKnowledgeBase')
+    parser.add_argument("-kb", "--kb_dir", type=str, default="/Users/xiaoliu/Work/SupportKnowledgeBase.wiki", help="the directory where SupportKnowledgeBase is")
+    parser.add_argument("-vectordb", "--vectordb_dir", type=str, default="/Users/xiaoliu/Work/Project/ClusterBot/doc/chroma", help="the directory where vectordb is")
 
 
     args = parser.parse_args()
@@ -232,7 +234,7 @@ if __name__ == "__main__":
 
 
     #step 2: read in vector database
-    doc_manager = DocumentManager('/Users/xiaoliu/Work/SupportKnowledgeBase.wiki')
+    doc_manager = DocumentManager(args.kb_dir)
     doc_manager.load_documents(split_on_header=args.split_on_header)
     doc_manager.split_documents(split_on_header=args.split_on_header)
 
@@ -243,7 +245,7 @@ if __name__ == "__main__":
     #embedding_model.client.tokenizer.pad_token = embedding_model.client.tokenizer.eos_token
     #embedding_model = HuggingFaceEmbeddings(model_name= "sentence-transformers/" + embedding_name)
 
-    persist_directory = '/Users/xiaoliu/Work/Project/ClusterBot/doc/chroma'
+    persist_directory = args.vectordb_dir
 
     try:
         shutil.rmtree(persist_directory)
