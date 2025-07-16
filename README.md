@@ -27,7 +27,7 @@ A novel RAG assistant designed to support High-Performance Computing (HPC) staff
 
 `conda env create -f environment.yml` on Mac
 
-`conda env create -f environment_linux.yml` on Linu
+`conda env create -f environment_linux.yml` on Linux
 
 
 
