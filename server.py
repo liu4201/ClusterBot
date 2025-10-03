@@ -42,7 +42,7 @@ from flask import Flask, render_template, request, redirect, Response, jsonify, 
 def get_answer(question):
     docs = vectordb.similarity_search(question,k=3)
 
-    url = "https://genai.rcac.purdue.edu/ollama/api/chat"
+    url = "https://genai.rcac.purdue.edu/api/chat/completions"
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json"
@@ -63,8 +63,12 @@ def get_answer(question):
     }
     response = requests.post(url, headers=headers, json=body)
     print(response)
-
-    return docs, json.loads(response.text)["message"]["content"]
+    if response.status_code == 200:
+        print(response.text)
+    else:
+        raise Exception(f"Error: {response.status_code}, {response.text}")
+        
+    return docs, json.loads(response.text)["choices"][0]["message"]["content"]
 
 def get_answer_from_local(question):
     docs = vectordb.similarity_search(question,k=3)
